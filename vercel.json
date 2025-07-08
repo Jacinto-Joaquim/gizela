@@ -1,9 +1,0 @@
-{
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/dashboard.html",
-      "permanent": true
-    }
-  ]
-}
