@@ -1,0 +1,163 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 40px;
+    background-image: url("jimua_EM_FESTA.jpg");
+    background-size: cover;        /* cobre toda a tela */
+    background-position: center;   /* centraliza a imagem */
+    background-repeat: repeat;  /* evita repetição */
+    height: 100vh;                 /* 100% da altura da tela */
+    width: 100vw;                  /* 100% da largura da tela */
+}
+
+.container1 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 150px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    margin-bottom: 10px; /* Espaço abaixo do primeiro contêiner */
+}
+.container2 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding:  230px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    
+}
+.container3 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 200px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    
+}
+.container4 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 170px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    justify-content: center;
+    align-items: centro;
+}
+.container5 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 210px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    justify-content: center;
+    align-items: centro;
+}
+.container6 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 210px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    justify-content: center;
+    align-items: centro;
+}
+.container7 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 190px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    justify-content: center;
+    align-items: centro;
+}
+.container8 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 150px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    justify-content: center;
+    align-items:center;
+}
+.container9 {
+    background-color: rgb(0, 0, 0,0.1);
+    padding: 350px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: inline-block;
+    max-width: 800px;
+    justify-content: center;
+    align-items:center;
+    
+}
+h2 {
+    margin-bottom: 40px;
+    color:rgb(141, 110, 48);
+}
+
+.opcoes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    width: 200px;
+    background-color:rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 120, 255, 0.2);
+    background-color: #cbae04;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color:floralwhite;
+}
+
+button {
+    margin-top: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #cbae04;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+button:hover {
+    background-color: rgba(142, 145, 12);;
+}
+
+#mensagem {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+}

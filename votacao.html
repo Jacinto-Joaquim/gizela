@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Votação Unificada</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <link rel="stylesheet" href="votacao.css">
+  <script>
+  // BLOQUEIO: verifica se já votou duas vezes
+  if (localStorage.getItem("votosFeitos") >= 2) {
+    alert("Você já atingiu o limite de 2 votos.");
+    document.body.innerHTML = "<h2 style='text-align:center;margin-top:50px;'>Você já votou 2 vezes. Obrigado!</h2>";
+  }
+</script>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .card {
+    background: transparent;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.3s ease;
+    margin-bottom: 250px;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+  }
+  .card img {
+    max-width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .card label {
+    font-size: 2.5em;
+    color: #ffffff;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <h1>Votação de Prêmios</h1>
+
+  <form id="formUnificado">
+    <div class="container">
+  <h2>MELHOR CORISTA</h2>
+  <div class="grid">
+    
+      <div class="card"><img src="public/corista1.jpg"><label><input type="radio" name="melhor_corista" value="Helena Dos Santos"> Helena Dos Santos</label></div>
+  <div class="card"><img src="public/corista2.jpg"><label><input type="radio" name="melhor_corista" value="Milena Miranda"> Milena Miranda</label></div>
+  <div class="card"><img src="public/corista3.jpg"><label><input type="radio" name="melhor_corista" value="Délcia Lourenço"> Délcia Lourenço</label></div>
+</div>
+    </div>
+
+    <div class="container">
+  <h2>CORISTA REVELAÇÃO</h2>
+  <div class="grid">
+    
+      <div class="card"><img src="public/C_revelacao1.jpg"><label><input type="radio" name="corista_revelacao" value="Marilda Guilherme"> Marilda Guilherme</label></div>
+  <div class="card"><img src="public/C_revelacao2.jpg"><label><input type="radio" name="corista_revelacao" value="Otiniel Cassenda"> Otiniel Cassenda</label></div>
+  <div class="card"><img src="public/C_revelacao3.jpg"><label><input type="radio" name="corista_revelacao" value="Tchissola Calhengue"> Tchissola Calhengue</label></div>
+</div>
+    </div>
+
+    <div class="container">
+  <h2>MELHOR DANÇARINA</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/melhor_dancarina1.jpg"><label><input type="radio" name="melhor_dancarina" value="Lorena Manuel"> Lorena Manuel</label></div>
+  <div class="card"><img src="public/melhor_dancarina2.jpg"><label><input type="radio" name="melhor_dancarina" value="Celmira Bento"> Celmira Bento</label></div>
+</div>
+</div>
+
+<div class="container">
+  <h2>DANÇARINA REVELAÇÃO</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/danc_reve1.jpg"><label><input type="radio" name="dancarina_revelacao" value="Maria e Silva"> Maria e Silva</label></div>
+  <div class="card"><img src="public/danc_reve2.jpg"><label><input type="radio" name="dancarina_revelacao" value="Marlene Vales"> Marlene Vales</label></div>
+</div>
+</div>
+
+<div class="container">
+  <h2>MELHOR ACTOR</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/melhor_ator1.jpg"><label><input type="radio" name="melhor_ator" value="Otiniel Cassenda"> Otiniel Cassenda</label></div>
+  <div class="card"><img src="public/melhor_ator2.jpg"><label><input type="radio" name="melhor_ator" value="Cris Correia"> Cris Correia</label></div>
+</div>
+</div>
+
+<div class="container">
+  <h2>ACTOR REVELAÇÃO</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/ATOR_REV1.jpg"><label><input type="radio" name="ator_revelacao" value="Arnaldo Júnior"> Arnaldo Júnior</label></div>
+  <div class="card"><img src="public/corista1.jpg"><label><input type="radio" name="ator_revelacao" value="Helena Manuel"> Helena Manuel</label></div>
+  <div class="card"><img src="public/ATOR_REV2.jpg"><label><input type="radio" name="ator_revelacao" value="Hermenegildo Marcelino"> Hermenegildo Marcelino</label></div>
+</div>
+</div>
+
+<div class="container">
+  <h2>GRUPO CULTURAL DO ANO</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/GRUPO_CULT1.jpg"><label><input type="radio" name="grupo_cultural" value="Grupo de dança Elohim"> Grupo de dança Elohim</label></div>
+  <div class="card"><img src="public/GRUPO_CULT2.jpg"><label><input type="radio" name="grupo_cultural" value="Grupo Coral Sinfonia Gospel"> Grupo Coral Sinfonia Gospel</label></div>
+</div>
+</div>
+
+<div class="container">
+  <h2>JOVEM DO ANO</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/jovem_ano.jpg"><label><input type="radio" name="jovem_do_ano" value="Sandrina Lourenço"> Sandrina Lourenço</label></div>
+  <div class="card"><img src="public/jovem_ano2.jpg"><label><input type="radio" name="jovem_do_ano" value="Anita Maurício"> Anita Maurício</label></div>
+  <div class="card"><img src="public/jovem__ano3.jpg"><label><input type="radio" name="jovem_do_ano" value="Hermenegildo Marcelino"> Hermenegildo Marcelino</label></div>
+</div>
+</div>
+
+<div class="container">
+  <h2>POETA DO ANO</h2>
+  <div class="grid">
+    
+  <div class="card"><img src="public/poeta_ano1.jpg"><label><input type="radio" name="poeta_do_ano" value="Dirceu Calhengue"> Dirceu Calhengue</label></div>
+  <div class="card"><img src="public/poet.jpg"><label><input type="radio" name="poeta_do_ano" value="Feliciana Lemos"> Feliciana Lemos</label></div>
+</div>
+</div>
+
+    <div class="container" style="text-align:center;">
+      <button type="submit" class="btn">Enviar todos os votos</button>
+      <p class="mensagem"></p>
+    </div>
+  </form>
+  <br><br><br><br><br><br>
+
+  <script>
+    const supabaseUrl = 'https://sbzfclctemgeziyrcmgy.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiemZjbGN0ZW1nZXppeXJjbWd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE5MzIzODUsImV4cCI6MjA2NzUwODM4NX0.3pG71UUz1AQq1ADWm1VNnkZIXXm6PYaqMNlboaJUzdc';
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    document.getElementById("formUnificado").addEventListener("submit", async function (e) {
+      // Grava no navegador que um voto foi feito
+      let total = parseInt(localStorage.getItem("votosFeitos") || "0");
+      localStorage.setItem("votosFeitos", total + 1);
+      e.preventDefault();
+      const form = e.target;
+      const categorias = [
+  "melhor_corista",
+  "corista_revelacao",
+  "melhor_dancarina",
+  "dancarina_revelacao",
+  "melhor_ator",
+  "ator_revelacao",
+  "grupo_cultural",
+  "jovem_do_ano",
+  "poeta_do_ano"
+];
+      let votosEnviados = 0;
+      let erros = [];
+
+      for (let categoria of categorias) {
+        const selecionado = form.querySelector(`input[name="${categoria}"]:checked`);
+        if (selecionado) {
+          const nome = selecionado.value;
+          const { error } = await supabaseClient.rpc('registrar_voto', {
+            categoria_nome: `form${categoria.charAt(0).toUpperCase() + categoria.slice(1)}`,
+            candidato_nome: nome
+          });
+          if (error) erros.push(categoria);
+          else votosEnviados++;
+        } else {
+          erros.push(categoria);
+        }
+      }
+
+      const mensagem = form.querySelector(".mensagem");
+      if (votosEnviados > 0 && erros.length === 0) {
+        mensagem.textContent = "Votos enviados com sucesso!";
+        mensagem.style.color = "green";
+      } else {
+        mensagem.textContent = `Algumas categorias não foram votadas: ${erros.join(", ")}`;
+        mensagem.style.color = "orange";
+      }
+    });
+  </script>
+</body>
+</html>

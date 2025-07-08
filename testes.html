@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Votação de Prêmios</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f8f8f8; }
+    .container { margin-bottom: 40px; background: #fff; padding: 20px; border-radius: 10px; }
+    .card { display: flex; align-items: center; margin-bottom: 10px; }
+    img { width: 100px; height: 100px; object-fit: cover; border-radius: 10px; margin-right: 10px; }
+    label { font-size: 16px; }
+    button { padding: 10px 20px; margin-top: 10px; }
+    #resultados { margin-top: 40px; background: #e1f5e1; padding: 20px; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Votação de Prêmios</h1>
+
+  <div class="container">
+    <h2>MELHOR CORISTA</h2>
+    <form id="formMelhorCorista">
+      <div class="card"><img src="corista1.jpg"><label><input type="radio" name="melhor_corista" value="Helena Dos Santos"> Helena Dos Santos</label></div>
+      <div class="card"><img src="corista2.jpg"><label><input type="radio" name="melhor_corista" value="Milena Miranda"> Milena Miranda</label></div>
+      <div class="card"><img src="corista3.jpg"><label><input type="radio" name="melhor_corista" value="Délcia Lourenço"> Délcia Lourenço</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>CORISTA REVELAÇÃO</h2>
+    <form id="formCoristaRevelacao">
+      <div class="card"><img src="C_revelacao1.jpg"><label><input type="radio" name="corista_revelacao" value="Marilda Guilherme"> Marilda Guilherme</label></div>
+      <div class="card"><img src="C_revelacao2.jpg"><label><input type="radio" name="corista_revelacao" value="Otiniel Cassenda"> Otiniel Cassenda</label></div>
+      <div class="card"><img src="C_revelacao3.jpg"><label><input type="radio" name="corista_revelacao" value="Tchissola Calhengue"> Tchissola Calhengue</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>MELHOR DANÇARINA</h2>
+    <form id="formMelhorDancarina">
+      <div class="card"><img src="melhor_dancarina1.jpg"><label><input type="radio" name="melhor_dancarina" value="Lorena Manuel"> Lorena Manuel</label></div>
+      <div class="card"><img src="melhor_dancarina2.jpg"><label><input type="radio" name="melhor_dancarina" value="Celmira Bento"> Celmira Bento</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>DANÇARINA REVELAÇÃO</h2>
+    <form id="formDancarinaRevelacao">
+      <div class="card"><img src="danc_reve1.jpg"><label><input type="radio" name="dancarina_revelacao" value="Maria e Silva"> Maria e Silva</label></div>
+      <div class="card"><img src="danc_reve2.jpg"><label><input type="radio" name="dancarina_revelacao" value="Marlene Vales"> Marlene Vales</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>MELHOR ACTOR</h2>
+    <form id="formMelhorAtor">
+      <div class="card"><img src="melhor_ator1.jpg"><label><input type="radio" name="melhor_ator" value="Otiniel Cassenda"> Otiniel Cassenda</label></div>
+      <div class="card"><img src="melhor_ator2.jpg"><label><input type="radio" name="melhor_ator" value="Cris Correia"> Cris Correia</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>ACTOR REVELAÇÃO</h2>
+    <form id="formAtorRevelacao">
+      <div class="card"><img src="ATOR_REV1.jpg"><label><input type="radio" name="ator_revelacao" value="Arnaldo Júnior"> Arnaldo Júnior</label></div>
+      <div class="card"><img src="corista1.jpg"><label><input type="radio" name="ator_revelacao" value="Helena Manuel"> Helena Manuel</label></div>
+      <div class="card"><img src="ATOR_REV2.jpg"><label><input type="radio" name="ator_revelacao" value="Hermenegildo Marcelino"> Hermenegildo Marcelino</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>GRUPO CULTURAL DO ANO</h2>
+    <form id="formGrupoCultural">
+      <div class="card"><img src="GRUPO_CULT1.jpg"><label><input type="radio" name="grupo_cultural" value="Grupo de dança Elohim"> Grupo de dança Elohim</label></div>
+      <div class="card"><img src="GRUPO_CULT2.jpg"><label><input type="radio" name="grupo_cultural" value="Grupo Coral Sinfonia Gospel"> Grupo Coral Sinfonia Gospel</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>JOVEM DO ANO</h2>
+    <form id="formJovemDoAno">
+      <div class="card"><img src="jovem_ano.jpg"><label><input type="radio" name="jovem_do_ano" value="Sandrina Lourenço"> Sandrina Lourenço</label></div>
+      <div class="card"><img src="jovem_ano2.jpg"><label><input type="radio" name="jovem_do_ano" value="Anita Maurício"> Anita Maurício</label></div>
+      <div class="card"><img src="jovem__ano3.jpg"><label><input type="radio" name="jovem_do_ano" value="Hermenegildo Marcelino"> Hermenegildo Marcelino</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>POETA DO ANO</h2>
+    <form id="formPoetaDoAno">
+      <div class="card"><img src="poeta_ano1.jpg"><label><input type="radio" name="poeta_do_ano" value="Dirceu Calhengue"> Dirceu Calhengue</label></div>
+      <div class="card"><img src="poet.jpg"><label><input type="radio" name="poeta_do_ano" value="Feliciana Lemos"> Feliciana Lemos</label></div>
+      <button type="submit">Votar</button>
+      <p class="mensagem"></p>
+    </form>
+  </div>
+
+  <button onclick="mostrarVencedores()">Ver Resultados</button>
+  <div id="resultados"></div>
+
+  <script>
+    document.querySelectorAll("form").forEach(form => {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const categoria = form.id;
+        const escolhido = form.querySelector("input[type='radio']:checked");
+        const msg = form.querySelector(".mensagem");
+
+        if (escolhido) {
+          const votos = JSON.parse(localStorage.getItem(categoria)) || {};
+          const nome = escolhido.value;
+          votos[nome] = (votos[nome] || 0) + 1;
+          localStorage.setItem(categoria, JSON.stringify(votos));
+          msg.textContent = `Você votou em: ${nome}! Obrigado.`;
+        } else {
+          msg.textContent = "Por favor, selecione um dos candidatos.";
+        }
+      });
+    });
+
+    function mostrarVencedores() {
+      const resultados = document.getElementById("resultados");
+      resultados.innerHTML = "<h3>Vencedores por Categoria:</h3>";
+      document.querySelectorAll("form").forEach(form => {
+        const categoria = form.id;
+        const votos = JSON.parse(localStorage.getItem(categoria)) || {};
+        const vencedor = Object.entries(votos).sort((a, b) => b[1] - a[1])[0];
+        if (vencedor) {
+          resultados.innerHTML += `<p><strong>${categoria.replace("form", "").replace(/([A-Z])/g, " $1")}:</strong> ${vencedor[0]} (${vencedor[1]} votos)</p>`;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

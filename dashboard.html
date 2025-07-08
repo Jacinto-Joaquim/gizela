@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard de Votação</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <h1>Dashboard de Resultados</h1>
+  <div id="tabelas"></div>
+  <div id="graficosCirculares"></div>
+  <div id="graficoComparativo"></div>
+  <div id="resumo"></div>
+
+  <script>
+    const supabaseUrl = 'https://sbzfclctemgeziyrcmgy.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNiemZjbGN0ZW1nZXppeXJjbWd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE5MzIzODUsImV4cCI6MjA2NzUwODM4NX0.3pG71UUz1AQq1ADWm1VNnkZIXXm6PYaqMNlboaJUzdc';
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    let chartPieRefs = {};
+    let chartBarRef = null;
+
+    async function carregarResultados() {
+      const { data, error } = await supabaseClient.from('votos').select('*');
+      if (error) {
+        console.error('Erro ao buscar votos:', error.message);
+        return;
+      }
+
+      const agrupado = {};
+      let totalVotos = 0;
+      data.forEach(voto => {
+        totalVotos += voto.total;
+        if (!agrupado[voto.categoria]) agrupado[voto.categoria] = [];
+        agrupado[voto.categoria].push({ nome: voto.nome, total: voto.total });
+      });
+
+      atualizarTabelas(agrupado);
+      atualizarGraficosCirculares(agrupado);
+      atualizarGraficoGeral(agrupado);
+      atualizarResumo(agrupado, totalVotos);
+    }
+
+    function atualizarTabelas(agrupado) {
+      const tabelas = document.getElementById('tabelas');
+      tabelas.innerHTML = '';
+
+      Object.entries(agrupado).forEach(([categoria, candidatos]) => {
+        const div = document.createElement('div');
+        div.className = 'categoria';
+        div.innerHTML = `<h2>${categoria.replace(/_/g, ' ').toUpperCase()}</h2>`;
+
+        let tabela = '<table><tr><th>Candidato</th><th>Total de Votos</th></tr>';
+        candidatos.forEach(c => {
+          tabela += `<tr><td>${c.nome}</td><td>${c.total}</td></tr>`;
+        });
+        tabela += '</table>';
+        div.innerHTML += tabela;
+        tabelas.appendChild(div);
+      });
+    }
+
+    function atualizarGraficosCirculares(agrupado) {
+      const graficos = document.getElementById('graficosCirculares');
+      graficos.innerHTML = '';
+      chartPieRefs = {}; // limpar refs antigas
+
+      Object.entries(agrupado).forEach(([categoria, candidatos]) => {
+        const canvas = document.createElement('canvas');
+        graficos.appendChild(canvas);
+
+        const chart = new Chart(canvas.getContext('2d'), {
+          type: 'pie',
+          data: {
+            labels: candidatos.map(c => c.nome),
+            datasets: [{
+              data: candidatos.map(c => c.total),
+              backgroundColor: candidatos.map(() => `hsl(${Math.random() * 360}, 60%, 60%)`)
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: categoria.replace(/_/g, ' ').toUpperCase()
+              }
+            }
+          }
+        });
+
+        chartPieRefs[categoria] = chart;
+      });
+    }
+
+    function atualizarGraficoGeral(agrupado) {
+      const comparativo = document.getElementById('graficoComparativo');
+      comparativo.innerHTML = '';
+
+      const canvas = document.createElement('canvas');
+      comparativo.appendChild(canvas);
+
+      const todos = [];
+      Object.entries(agrupado).forEach(([categoria, candidatos]) => {
+        candidatos.forEach(c => todos.push({ nome: `${c.nome} (${categoria})`, total: c.total }));
+      });
+
+      chartBarRef = new Chart(canvas.getContext('2d'), {
+        type: 'bar',
+        data: {
+          labels: todos.map(c => c.nome),
+          datasets: [{
+            label: 'Total de Votos (Comparação Geral)',
+            data: todos.map(c => c.total),
+            backgroundColor: '#3e95cd'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            title: { display: true, text: 'Comparativo Geral de Todos os Candidatos' }
+          },
+          scales: {
+            y: { beginAtZero: true }
+          }
+        }
+      });
+    }
+
+    function atualizarResumo(agrupado, totalVotos) {
+      const resumo = document.getElementById('resumo');
+      const totalCategorias = Object.keys(agrupado).length;
+      const totalCandidatos = Object.values(agrupado).flat().length;
+
+      resumo.innerHTML = `
+        <div class="categoria">
+          <h2>Resumo Geral</h2>
+          <p><strong>Total de Categorias:</strong> ${totalCategorias}</p>
+          <p><strong>Total de Candidatos:</strong> ${totalCandidatos}</p>
+          <p><strong>Total de Votos:</strong> ${totalVotos}</p>
+        </div>
+      `;
+    }
+
+    carregarResultados();
+    setInterval(carregarResultados, 10000); // Atualiza a cada 10s
+  </script>
+</body>
+</html>
